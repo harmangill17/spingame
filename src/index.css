@@ -33,12 +33,13 @@ h1 {
 
 .layout {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
+  gap: 4rem;
+  flex-wrap: nowrap;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 /* Tape styling */
