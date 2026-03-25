@@ -3,8 +3,10 @@ import { useEffect, useRef } from 'react';
 const SEGS = [
   { type:'roast',      fill:'#e09030', text:'white' },
   { type:'truth',      fill:'#3867d6', text:'white' },
+  { type:'mystery',    fill:'#8e44ad', text:'white' },
   { type:'compliment', fill:'#6a9e30', text:'white' },
   { type:'dare',       fill:'#eb3b5a', text:'white' },
+  { type:'technical',  fill:'#16a085', text:'white' },
   { type:'roast',      fill:'#f39c12', text:'white' },
   { type:'truth',      fill:'#4b7bec', text:'white' },
   { type:'compliment', fill:'#c8d870', text:'#1a3000' },
@@ -16,6 +18,8 @@ const LABELS = {
   compliment: 'NICE',
   truth:      'TRUTH',
   dare:       'DARE',
+  mystery:    'MYSTERY',
+  technical:  'TECH'
 };
 
 export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
@@ -113,6 +117,8 @@ export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
         <div className="sc c"><span>{stats.compliments}</span>💚 nice</div>
         <div className="sc tr"><span>{stats.truths}</span>👁️ truths</div>
         <div className="sc d"><span>{stats.dares}</span>⚡ dares</div>
+        <div className="sc my" style={{ background: '#8e44ad', color: 'white' }}><span>{stats.mysteries}</span>🔮 mystery</div>
+        <div className="sc te" style={{ background: '#16a085', color: 'white' }}><span>{stats.technicals}</span>💻 tech</div>
       </div>
     </div>
   );

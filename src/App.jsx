@@ -56,8 +56,24 @@ const DARES = [
   "Hand your phone to the person across from you and let them set your alarm for tomorrow."
 ];
 
+const MYSTERIES = [
+  "If you had to hide a body on campus, where would you put it?",
+  "What's the deepest rabbit hole you've gone down at 3 AM?",
+  "Describe a conspiracy theory you actually believe in.",
+  "If you were a wanted criminal, what would your crime be?",
+  "What is the strangest coincidence you've ever experienced?"
+];
+
+const TECHNICALS = [
+  "Explain what a closure is in JavaScript in under 10 seconds.",
+  "Write a regex to validate an email address (on a napkin or in your head).",
+  "What's the difference between margin and padding, quick!",
+  "Are you a spaces or tabs person? Defend your choice.",
+  "Explain the event loop to me like I'm five."
+];
+
 export default function App() {
-  const [stats, setStats] = useState({ roasts: 0, compliments: 0, truths: 0, dares: 0 });
+  const [stats, setStats] = useState({ roasts: 0, compliments: 0, truths: 0, dares: 0, mysteries: 0, technicals: 0 });
   const [history, setHistory] = useState([]);
   const [result, setResult] = useState({ type: null, text: 'spin the wheel, grab a drink, and match the vibe... 👀' });
   const [isSpinning, setIsSpinning] = useState(false);
@@ -67,13 +83,15 @@ export default function App() {
     const pool = 
       type === 'roast' ? ROASTS :
       type === 'compliment' ? COMPLIMENTS :
-      type === 'truth' ? TRUTHS : DARES;
+      type === 'truth' ? TRUTHS : 
+      type === 'mystery' ? MYSTERIES :
+      type === 'technical' ? TECHNICALS : DARES;
 
     text = pool[Math.floor(Math.random() * pool.length)];
 
     setStats(prev => ({
       ...prev,
-      [type + 's']: prev[type + 's'] + 1
+      [type === 'mystery' ? 'mysteries' : type === 'technical' ? 'technicals' : type + 's']: prev[type === 'mystery' ? 'mysteries' : type === 'technical' ? 'technicals' : type + 's'] + 1
     }));
 
     setResult({ type, text });

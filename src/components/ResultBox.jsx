@@ -2,10 +2,12 @@ const BADGE_CONFIG = {
   roast: { text: '🔥 ROASTED!', colorClass: 'roast' },
   compliment: { text: '💚 NICE ONE!', colorClass: 'compliment' },
   truth: { text: '👁️ TRUTH TIME!', colorClass: 'truth' },
-  dare: { text: '⚡ DARE!', colorClass: 'dare' }
+  dare: { text: '⚡ DARE!', colorClass: 'dare' },
+  mystery: { text: '🔮 MYSTERY?!', colorClass: 'mystery' },
+  technical: { text: '💻 GEEK SCENE!', colorClass: 'technical' }
 };
 
-const ICON = { roast: '🔥', compliment: '💚', truth: '👁️', dare: '⚡' };
+const ICON = { roast: '🔥', compliment: '💚', truth: '👁️', dare: '⚡', mystery: '🔮', technical: '💻' };
 
 export default function ResultBox({ result, history, isSpinning }) {
   let badgeClass = 'result-type-badge';

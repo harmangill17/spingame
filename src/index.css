@@ -247,6 +247,8 @@ canvas:hover {
 .result-type-badge.compliment { background: #d0f0d0; color: #1a6020; border: 2px solid #50b050; }
 .result-type-badge.truth      { background: #d0e0ff; color: #1030a0; border: 2px solid #5070e0; }
 .result-type-badge.dare       { background: #ffd0d0; color: #a01010; border: 2px solid #e05050; }
+.result-type-badge.mystery    { background: #f2d7f5; color: #6a1b9a; border: 2px solid #9c27b0; }
+.result-type-badge.technical  { background: #d0f0e8; color: #00695c; border: 2px solid #009688; }
 
 .result-text-area {
   font-family: 'Caveat', cursive;
@@ -329,6 +331,8 @@ canvas:hover {
 .hi.compliment { color: #1a5010; border-color: #50b050; background: #f0fff0; }
 .hi.truth      { color: #1030a0; border-color: #5070e0; background: #e8f0ff; }
 .hi.dare       { color: #a01010; border-color: #e05050; background: #ffe8e8; }
+.hi.mystery    { color: #6a1b9a; border-color: #9c27b0; background: #fdf5ff; }
+.hi.technical  { color: #00695c; border-color: #009688; background: #f0fff8; }
 
 /* Confetti & Emojis Animation */
 .bit {
