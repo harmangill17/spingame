@@ -1,23 +1,21 @@
 import { useEffect, useRef } from 'react';
 
 const SEGS = [
-  { type:'roast',      fill:'#4a7c20', text:'white' },
-  { type:'compliment', fill:'#c8d870', text:'#2a4000' },
   { type:'roast',      fill:'#e09030', text:'white' },
-  { type:'compliment', fill:'#2d5a1b', text:'white' },
-  { type:'roast',      fill:'#d4b840', text:'#3a3000' },
+  { type:'truth',      fill:'#3867d6', text:'white' },
   { type:'compliment', fill:'#6a9e30', text:'white' },
-  { type:'mystery',    fill:'#b8c850', text:'#2a3800' },
-  { type:'roast',      fill:'#3a6a18', text:'white' },
-  { type:'compliment', fill:'#e8a020', text:'white' },
-  { type:'double',     fill:'#1e4010', text:'white' },
+  { type:'dare',       fill:'#eb3b5a', text:'white' },
+  { type:'roast',      fill:'#f39c12', text:'white' },
+  { type:'truth',      fill:'#4b7bec', text:'white' },
+  { type:'compliment', fill:'#c8d870', text:'#1a3000' },
+  { type:'dare',       fill:'#fc5c65', text:'white' },
 ];
 
 const LABELS = {
   roast:      'ROAST',
   compliment: 'NICE',
-  mystery:    '???',
-  double:     'x2!!',
+  truth:      'TRUTH',
+  dare:       'DARE',
 };
 
 export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
@@ -55,7 +53,7 @@ export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
 
       const label = LABELS[seg.type];
       ctx.rotate(Math.PI/2);
-      ctx.fillText(label, 0, -(R*0.58));
+      ctx.fillText(label, 0, -(R*0.55));
       ctx.restore();
     }
 
@@ -110,10 +108,11 @@ export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
         </div>
       </div>
 
-      <div className="scores">
+      <div className="scores" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
         <div className="sc r"><span>{stats.roasts}</span>🔥 roasts</div>
-        <div className="sc t"><span>{stats.total}</span>⚡ spins</div>
         <div className="sc c"><span>{stats.compliments}</span>💚 nice</div>
+        <div className="sc tr"><span>{stats.truths}</span>👁️ truths</div>
+        <div className="sc d"><span>{stats.dares}</span>⚡ dares</div>
       </div>
     </div>
   );

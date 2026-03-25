@@ -1,10 +1,20 @@
+const BADGE_CONFIG = {
+  roast: { text: '🔥 ROASTED!', colorClass: 'roast' },
+  compliment: { text: '💚 NICE ONE!', colorClass: 'compliment' },
+  truth: { text: '👁️ TRUTH TIME!', colorClass: 'truth' },
+  dare: { text: '⚡ DARE!', colorClass: 'dare' }
+};
+
+const ICON = { roast: '🔥', compliment: '💚', truth: '👁️', dare: '⚡' };
+
 export default function ResultBox({ result, history, isSpinning }) {
   let badgeClass = 'result-type-badge';
   let badgeText = '';
   
   if (result.type && !isSpinning) {
-    badgeClass += ` show settled ${result.type}`;
-    badgeText = result.type === 'roast' ? '🔥 ROASTED' : '💚 COMPLIMENTED';
+    const config = BADGE_CONFIG[result.type];
+    badgeClass += ` show settled ${config.colorClass}`;
+    badgeText = config.text;
   } else if (isSpinning) {
     badgeClass = 'result-type-badge';
   }
@@ -37,7 +47,7 @@ export default function ResultBox({ result, history, isSpinning }) {
           ) : (
             history.map(h => (
               <div key={h.id} className={`hi ${h.type}`}>
-                {h.type === 'roast' ? '🔥 ' : '💚 '}
+                <span style={{marginRight: '6px'}}>{ICON[h.type]}</span>
                 {h.text}
               </div>
             ))
