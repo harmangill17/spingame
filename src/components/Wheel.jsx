@@ -49,15 +49,15 @@ export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
       ctx.save();
       ctx.translate(R, R);
       ctx.rotate(s + ARC/2);
-      ctx.textAlign = 'center';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
       ctx.fillStyle = seg.text;
-      ctx.font = `bold ${R*0.13}px 'Permanent Marker', cursive`;
-      ctx.shadowColor = 'rgba(0,0,0,0.25)';
+      ctx.font = `bold ${R*0.11}px 'Verdana', sans-serif`;
+      ctx.shadowColor = 'rgba(0,0,0,0.4)';
       ctx.shadowBlur = 4;
 
       const label = LABELS[seg.type];
-      ctx.rotate(Math.PI/2);
-      ctx.fillText(label, 0, -(R*0.55));
+      ctx.fillText(label, R - 25, 0);
       ctx.restore();
     }
 
@@ -102,11 +102,11 @@ export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
   return (
     <div className="wheel-side">
       <div className="wheel-container">
-        <div className="arrow-wrap">
-          <div className="arrow-tip"></div>
+        <div className="arrow-wrap" style={{top: '-32px'}}>
+          <div className="arrow-tip" style={{borderTop: '42px solid #1a1a1a', borderLeft: '22px solid transparent', borderRight: '22px solid transparent'}}></div>
           <div className="arrow-base"></div>
         </div>
-        <canvas ref={canvasRef} width="420" height="420" onClick={spin}></canvas>
+        <canvas ref={canvasRef} width="540" height="540" onClick={spin}></canvas>
         <div className={`hub ${isSpinning ? 'spinning' : ''}`} onClick={spin}>
           SPIN
         </div>

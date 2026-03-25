@@ -69,8 +69,8 @@ h1 {
 
 .wheel-container {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: 540px;
+  height: 540px;
   animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
