@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Wheel from './components/Wheel';
 import ResultBox from './components/ResultBox';
 
@@ -23,96 +23,112 @@ const ROASTS = [
   "Motivation loading… still loading…",
   "You look like the friend who says “bro relax”",
   "You look like you’ve said “proxy laga dena” at least once",
-  "Your attendance is higher in canteens than in class"
+  "Your attendance is higher in canteens than in class",
+  "You radiate 'I forgot my pen' energy",
+  "Your favorite accessory is a 1% phone battery",
+  "You look like you rely on 'we'll see' for your entire life plan",
+  "You definitely hit 'remind me tomorrow' on software updates for a year",
+  "You look like you cite Wikipedia even when explicitly told not to",
+  "Your strategy for group projects is just maintaining a physical presence",
+  "You give 'sleeping with eyes open in lectures' vibes",
+  "You look like you measure time in 'number of classes left'",
+  "Your daily steps count is just walks to the vending machine",
+  "You probably have 43 unread group chat messages right now"
 ];
 
 const COMPLIMENTS = [
   "You look like the one who actually understands what the professor is saying",
   "Group project leader energy detected",
   "Your attendance might be low but your vibe is high",
-  "You look like you say “I’ll start studying tomorrow”",
   "Someone in your class definitely copies your notes",
   "You look like you know shortcuts in life",
-  "You probably came here just to avoid class",
+  "You probably came here just to avoid class, and honestly respect",
   "Your friends definitely make you explain things to them",
   "You look like you send the best memes in the group chat",
   "If there’s free food, you’ll find it first",
-  "You give “last minute assignment” energy",
+  "You give “last minute assignment but getting an A” energy",
   "You look like you survive exams somehow every time",
   "Plot twist: you’re actually the smart one in your group",
-  "You look like you say “easy hai” before exams",
-  "You probably joined this game to waste time (good choice)",
-  "You give “I’ll figure it out” energy",
-  "Someone in your friend group is scared of your brain",
+  "You look like you say “easy hai” before exams and mean it",
+  "You give “I’ll figure it out” energy and it works",
+  "Someone in your friend group is intimidated by your brain",
   "You look like you know what’s happening even when you don’t",
-  "You definitely know campus shortcuts",
-  "You give strong “jugaad” energy"
+  "You definitely know all the secret campus shortcuts",
+  "You give strong “supreme jugaad” energy",
+  "You have the perfect 'pretending to take notes' face",
+  "You look like the main character of a chill indie movie"
 ];
 
 const TRUTHS = [
-  "Wildest thing youve done to impress someone",
-  "Who in your friend group is the worst dressed",
-  "Who do you think is the best looking person here",
-  "What was the most childish thing you still do"
+  "Wildest thing you've done to impress someone",
+  "Who in your friend group is the most chaotic",
+  "What was the most childish thing you still do",
+  "What is the most embarrassing thing in your search history right now",
+  "Which class do you sleep in the most",
+  "Have you ever accidentally sent a text about someone to that person",
+  "What is your silliest irrational fear",
+  "What's a food combo you love that others think is gross",
+  "What's the longest you've gone without doing laundry in college",
+  "What is the most ridiculous excuse you've used for missing class"
 ];
 
 const DARES = [
-  "Do your best robot walk across the booth 🤖",
-  "Say “Sat Sri Akal everyone!” like a stage host",
-  "Give a dramatic movie-style dialogue",
-  "Act like you just won a big award",
-  "Do a slow-motion walk",
-  "Pose like a model for 5 seconds",
-  "Pretend you’re a teacher taking attendance",
-  "Say one motivational line to the crowd",
-  "Introduce yourself like a famous celebrity",
-  "Do your best dance move for 10 seconds 💃",
-  "Copy the person standing next to you for 15 seconds",
-  "Make your funniest face for the camera",
-  "Pretend your phone just got 100 marks in exams",
-  "Show your “exam stress” acting",
-  "Do your best villain laugh",
-  "Pretend you’re a news reporter on campus",
-  "Act like you just found free food on campus",
-  "Walk like a superstar entering college",
-  "High-five 3 random people ✋",
-  "Compliment someone in the crowd",
-  "Start a mini clap and get people to join",
-  "Ask someone nearby their favorite food quickly",
-  "Take a selfie with the ARMSS team",
-  "Do a quick handshake with a stranger",
-  "FOLLOW armss.gndu on Instagram"
+  "Do your best robot walk across the room 🤖",
+  "Give a dramatic movie-style dialogue to a wall",
+  "Act like you just won a huge award and give a speech",
+  "Do a slow-motion walk for 15 seconds",
+  "Pose like a high-fashion model for 5 seconds",
+  "Pretend you’re a professor scolding a noisy class",
+  "Say one intensely motivational line to the crowd without laughing",
+  "Introduce yourself like an enigmatic famous celebrity",
+  "Do your best awkward dance move for 10 seconds 💃",
+  "Copy the exact posture of the person next to you for 30 seconds",
+  "Make your funniest zoomed-in video call face",
+  "Pretend your phone just told you that classes are cancelled forever",
+  "Show us your best 'pretending to understand the lecture' face",
+  "Do your best cartoon villain laugh",
+  "Pretend you’re a frantic news reporter live on campus",
+  "Act like you just spotted a tray of free pizza",
+  "Walk like a superstar entering a random lecture hall",
+  "Compliment the shoes of someone nearby",
+  "Ask someone nearby what their controversial food opinion is",
+  "Try to start a slow clap and see if anyone joins"
 ];
 
 const MYSTERIES = [
-  "If you had to hide a body on campus, where would you put it?",
-  "What's the deepest rabbit hole you've gone down at 3 AM?",
-  "Describe a conspiracy theory you actually believe in.",
-  "If you were a wanted criminal, what would your crime be?",
-  "What is the strangest coincidence you've ever experienced?"
+  "If you had a secret underground base on campus, where would the entrance be?",
+  "What's the deepest internet rabbit hole you've gone down at 3 AM?",
+  "Describe a harmless conspiracy theory you actually believe in.",
+  "If you were a chaotic but harmless cryptid, what would you do?",
+  "What is the strangest coincidence you've ever experienced during an exam?",
+  "If the college was a simulation, what would be the biggest glitch?",
+  "What is your weirdest deja vu moment?",
+  "If you found a mysterious briefcase in the library, would you open it?",
+  "What's an oddly specific superpower you wish you had for college life?",
+  "If aliens landed on campus asking for a leader, who would you point to?"
 ];
 
 const RAPID_FIRES = [
-  "Bunk class or attend class?",
-  "Assignment early or last minute?",
-  "Front bench or back bench?",
-  "Study alone or with friends?",
-  "Morning class or afternoon class?",
-  "Library or canteen?",
-  "Notes or YouTube lectures?",
-  "Online exam or offline exam?",
-  "Lab day or holiday?",
-  "Attendance or internal marks?",
-  "Study 1 hour or scroll phone 3 hours?",
-  "Sleep or assignment?",
-  "Exam tomorrow or surprise test today?",
-  "Free food or free WiFi?",
-  "Group project or solo project?",
-  "Alarm snooze or wake up first try?",
-  "Gym or nap?",
-  "8am class or no attendance rule?",
-  "Study plan or panic plan?",
-  "Luck or hard work in exams?"
+  "Skip class for sleep or skip class for food?",
+  "Assignment early panic or last minute panic?",
+  "Front bench anxiety or back bench boredom?",
+  "Study alone entirely or get distracted with friends?",
+  "8 AM class or 5 PM class?",
+  "Quiet library or loud canteen?",
+  "Messy notes or perfect notes you never read?",
+  "Online open book or offline easy exam?",
+  "Tedious lab or boring lecture?",
+  "Strict attendance or strictly tough grading?",
+  "Study 1 productive hour or scroll phone 3 hours pretending?",
+  "All-nighter or wake up at 4 AM?",
+  "Surprise test today or brutal exam tomorrow?",
+  "Free terrible food or expensive decent food?",
+  "Flawless group project or stress-free solo project?",
+  "Alarm snooze champion or wake up first try psychopath?",
+  "Gym session or legendary nap?",
+  "No attendance rule but hard exams or strict attendance but easy exams?",
+  "Color-coded study plan or chaotic sticky notes?",
+  "Pure luck or grinding hard in finals?"
 ];
 
 export default function App() {
@@ -120,6 +136,7 @@ export default function App() {
   const [history, setHistory] = useState([]);
   const [result, setResult] = useState({ type: null, text: 'spin the wheel, grab a drink, and match the vibe... 👀' });
   const [isSpinning, setIsSpinning] = useState(false);
+  const recentTextsRef = useRef([]);
 
   const handleReveal = (type) => {
     let text = '';
@@ -130,7 +147,17 @@ export default function App() {
       type === 'mystery' ? MYSTERIES :
       type === 'rapid' ? RAPID_FIRES : DARES;
 
-    text = pool[Math.floor(Math.random() * pool.length)];
+    let availableTexts = pool.filter(item => !recentTextsRef.current.includes(item));
+    
+    // Fallback in case we cycle through all available options in the combined pool 
+    if (availableTexts.length === 0) {
+      availableTexts = pool;
+    }
+
+    text = availableTexts[Math.floor(Math.random() * availableTexts.length)];
+    
+    // Add to recent queue and limit to last 10
+    recentTextsRef.current = [...recentTextsRef.current, text].slice(-10);
 
     setStats(prev => ({
       ...prev,
