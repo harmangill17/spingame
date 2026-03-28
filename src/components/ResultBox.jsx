@@ -4,10 +4,10 @@ const BADGE_CONFIG = {
   truth: { text: '👁️ TRUTH TIME!', colorClass: 'truth' },
   dare: { text: '⚡ DARE!', colorClass: 'dare' },
   mystery: { text: '🔮 MYSTERY?!', colorClass: 'mystery' },
-  technical: { text: '💻 GEEK SCENE!', colorClass: 'technical' }
+  rapid: { text: '⏱️ RAPID FIRE!', colorClass: 'rapid' }
 };
 
-const ICON = { roast: '🔥', compliment: '💚', truth: '👁️', dare: '⚡', mystery: '🔮', technical: '💻' };
+const ICON = { roast: '🔥', compliment: '💚', truth: '👁️', dare: '⚡', mystery: '🔮', rapid: '⏱️' };
 
 export default function ResultBox({ result, history, isSpinning }) {
   let badgeClass = 'result-type-badge';

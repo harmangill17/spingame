@@ -37,7 +37,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 4rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1200px;
 }
@@ -70,8 +70,9 @@ h1 {
 
 .wheel-container {
   position: relative;
-  width: 540px;
-  height: 540px;
+  width: 90vw;
+  max-width: 540px;
+  aspect-ratio: 1 / 1;
   animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -89,6 +90,8 @@ canvas {
     8px 10px 30px rgba(0,0,0,0.2);
   cursor: pointer;
   display: block;
+  width: 100%;
+  height: 100%;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 canvas:hover {
@@ -101,7 +104,7 @@ canvas:hover {
 
 .arrow-wrap {
   position: absolute;
-  top: -28px;
+  top: -32px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -112,9 +115,9 @@ canvas:hover {
 }
 .arrow-tip {
   width: 0; height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-top: 36px solid #1a1a1a;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-top: 42px solid #1a1a1a;
 }
 .arrow-base {
   width: 10px; height: 14px;
@@ -249,7 +252,7 @@ canvas:hover {
 .result-type-badge.truth      { background: #d0e0ff; color: #1030a0; border: 2px solid #5070e0; }
 .result-type-badge.dare       { background: #ffd0d0; color: #a01010; border: 2px solid #e05050; }
 .result-type-badge.mystery    { background: #f2d7f5; color: #6a1b9a; border: 2px solid #9c27b0; }
-.result-type-badge.technical  { background: #d0f0e8; color: #00695c; border: 2px solid #009688; }
+.result-type-badge.rapid  { background: #d0f0e8; color: #00695c; border: 2px solid #009688; }
 
 .result-text-area {
   font-family: 'Caveat', cursive;
@@ -333,7 +336,7 @@ canvas:hover {
 .hi.truth      { color: #1030a0; border-color: #5070e0; background: #e8f0ff; }
 .hi.dare       { color: #a01010; border-color: #e05050; background: #ffe8e8; }
 .hi.mystery    { color: #6a1b9a; border-color: #9c27b0; background: #fdf5ff; }
-.hi.technical  { color: #00695c; border-color: #009688; background: #f0fff8; }
+.hi.rapid  { color: #00695c; border-color: #009688; background: #f0fff8; }
 
 /* Confetti & Emojis Animation */
 .bit {
@@ -355,4 +358,68 @@ canvas:hover {
   10%{opacity:1;transform:translateY(-10vh) scale(1.2)}
   90%{opacity:0.8;transform:translateY(-90vh) scale(1)}
   100%{opacity:0;transform:translateY(-105vh) rotate(360deg) scale(0.8)}
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 1024px) {
+  .layout {
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .layout {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .result-side {
+    width: 100%;
+    max-width: 480px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .arrow-wrap {
+    top: -24px;
+    transform: translateX(-50%) scale(0.8);
+  }
+  
+  .hub {
+    width: 56px;
+    height: 56px;
+    font-size: 0.8rem;
+  }
+  
+  .scores {
+    gap: 0.5rem;
+  }
+  
+  .sc {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .sc span {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .wheel-container {
+    width: 70vh;
+    max-width: 400px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .layout {
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+  }
 }

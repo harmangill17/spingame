@@ -102,8 +102,8 @@ export default function Wheel({ stats, isSpinning, setIsSpinning, onReveal }) {
   return (
     <div className="wheel-side">
       <div className="wheel-container">
-        <div className="arrow-wrap" style={{top: '-32px'}}>
-          <div className="arrow-tip" style={{borderTop: '42px solid #1a1a1a', borderLeft: '22px solid transparent', borderRight: '22px solid transparent'}}></div>
+        <div className="arrow-wrap">
+          <div className="arrow-tip"></div>
           <div className="arrow-base"></div>
         </div>
         <canvas ref={canvasRef} width="540" height="540" onClick={spin}></canvas>
